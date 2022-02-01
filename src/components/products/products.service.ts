@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateProductInput } from './dto/create-product.input';
-import { UpdateProductInput } from './dto/update-product.input';
-import { Products } from './entities/product.model';
+import { CreateProductInput } from './schemas/create-product.input';
+import { UpdateProductInput } from './schemas/update-product.input';
+import { Product } from './schemas/product.model';
 
 @Injectable()
 export class ProductsService {
 	constructor(
-		@InjectModel(Products) private productsModel: typeof Products,
-	) {}
+		@InjectModel(Product) private product: typeof Product,
+	) { }
 
 	async findAll() {
-		const products = await this.productsModel.findAll();
+		const products = await this.product.findAll();
 		return products;
 	}
 
 	async findOne(id: number) {
-		const product = await this.productsModel.findOne({
+		const product = await this.product.findOne({
 			where: {
 				id,
 			},
@@ -25,7 +25,7 @@ export class ProductsService {
 	}
 
 	async create(data: CreateProductInput) {
-		return await this.productsModel.create({ ...data });
+		return await this.product.create({ ...data });
 	}
 
 	async update(id: number, data: UpdateProductInput) {
