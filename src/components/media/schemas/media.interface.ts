@@ -1,5 +1,5 @@
 export interface MediaIF {
-    id: number
-    url: string
-    description: string
+	id: number;
+	url: string;
+	description: string;
 }

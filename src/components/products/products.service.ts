@@ -6,9 +6,7 @@ import { Product } from './schemas/product.model';
 
 @Injectable()
 export class ProductsService {
-	constructor(
-		@InjectModel(Product) private product: typeof Product,
-	) { }
+	constructor(@InjectModel(Product) private product: typeof Product) {}
 
 	async findAll() {
 		const products = await this.product.findAll();

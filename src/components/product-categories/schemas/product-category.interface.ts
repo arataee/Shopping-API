@@ -1,5 +1,5 @@
 export interface ProductCategoryIF {
-    id: number
-    product_id: number
-    category_id: number
+	id: number;
+	product_id: number;
+	category_id: number;
 }
