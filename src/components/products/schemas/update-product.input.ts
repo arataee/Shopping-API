@@ -6,5 +6,20 @@ export class UpdateProductInput {
 	id: number;
 
 	@Field()
-	name: string;
+	title: string;
+
+	@Field()
+	description: string;
+
+	@Field()
+	content: string;
+
+	@Field()
+	indexImage: string;
+
+	@Field(() => Int)
+	price: number;
+
+	@Field(() => Int)
+	stock: number;
 }
