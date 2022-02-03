@@ -1,6 +1,6 @@
 export interface CategoryIF {
-    id: number
-    name: number
-    description: string
-    slug: string
+	id: number;
+	name: string;
+	description: string;
+	slug: string;
 }
