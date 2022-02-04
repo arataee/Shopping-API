@@ -25,3 +25,12 @@ export class User implements UsersIF {
 	@Field((type) => Roles)
 	role: Roles;
 }
+
+@ObjectType()
+export class UserToken {
+	@Field()
+	token: string;
+
+	@Field((type) => User)
+	user: User;
+}
