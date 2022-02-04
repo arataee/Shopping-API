@@ -9,9 +9,11 @@ import {
 	AllowNull,
 	HasMany,
 	Default,
+	BeforeCreate,
 } from 'sequelize-typescript';
 import { Roles } from './user-roles.enum';
 import { UsersIF } from './user.interface';
+import { genSalt, hash } from 'bcryptjs';
 
 /*
 	Association & Relations
@@ -33,6 +35,12 @@ export class User extends Model implements UsersIF {
 	@AllowNull(false)
 	@Column(DataType.STRING)
 	email: string;
+
+	@BeforeCreate
+	static hashPassword = async (instance: User) => {
+		const salt = await genSalt(10);
+		instance.password = await hash(instance.password, salt);
+	};
 
 	@AllowNull(false)
 	@Column(DataType.STRING)
