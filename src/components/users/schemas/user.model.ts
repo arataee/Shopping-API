@@ -18,7 +18,7 @@ import { genSalt, hash } from 'bcryptjs';
 /*
 	Association & Relations
 */
-import { Product } from 'src/components/products/schemas/product.model';
+import { Product } from '../../products/schemas/product.model';
 import { Comment } from '../../comments/schemas/comment.model';
 
 @Table({ updatedAt: false, createdAt: true, tableName: 'user' })
