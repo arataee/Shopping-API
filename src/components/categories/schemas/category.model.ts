@@ -17,8 +17,8 @@ import { CategoryIF } from './category.interface';
 /*
 	Association & Relations
 */
-import { ProductCategory } from 'src/components/product-categories/schemas/product-category.model';
-import { Product } from 'src/components/products/schemas/product.model';
+import { ProductCategory } from '../../product-categories/schemas/product-category.model';
+import { Product } from '../../products/schemas/product.model';
 
 @Table({ updatedAt: false, createdAt: false, tableName: 'categories' })
 export class Category extends Model implements CategoryIF {
