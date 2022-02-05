@@ -61,15 +61,15 @@ export class Product extends Model implements ProductIF {
 	/*
 		Association & Relations
 	*/
-	@BelongsToMany(() => Category, () => ProductCategory)
-	categories: Category[];
+	// @BelongsToMany(() => Category, () => ProductCategory)
+	// categories: Category[];
 
-	@BelongsToMany(() => Media, () => ProductMedia)
-	media: Media[];
+	// @BelongsToMany(() => Media, () => ProductMedia)
+	// media: Media[];
 
-	@HasMany(() => Comment)
-	comments: Comment[];
+	// @HasMany(() => Comment)
+	// comments: Comment[];
 
-	@HasMany(() => ProductMeta)
-	productMetas: ProductMeta[];
+	// @HasMany(() => ProductMeta)
+	// productMetas: ProductMeta[];
 }
