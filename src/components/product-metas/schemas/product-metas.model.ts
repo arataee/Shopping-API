@@ -14,7 +14,7 @@ import { ProductMetaIF } from './product-meta.interface';
 /*
 	Association & Relations
 */
-import { Product } from 'src/components/products/schemas/product.model';
+import { Product } from '../../products/schemas/product.model';
 
 @Table({ updatedAt: false, createdAt: false, tableName: 'product-metas' })
 export class ProductMeta extends Model implements ProductMetaIF {
