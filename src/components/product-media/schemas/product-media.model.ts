@@ -8,8 +8,8 @@ import {
 	AllowNull,
 	ForeignKey,
 } from 'sequelize-typescript';
-import { Media } from 'src/components/media/schemas/media.model';
-import { Product } from 'src/components/products/schemas/product.model';
+import { Media } from '../../media/schemas/media.model';
+import { Product } from '../../products/schemas/product.model';
 import { ProductMediaIF } from './product-media.interface';
 
 @Table({ updatedAt: false, createdAt: true, tableName: 'products' })
