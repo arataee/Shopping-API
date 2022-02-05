@@ -9,8 +9,8 @@ import {
 	ForeignKey,
 	BelongsToMany,
 } from 'sequelize-typescript';
-import { Category } from 'src/components/categories/schemas/category.model';
-import { Product } from 'src/components/products/schemas/product.model';
+import { Category } from '../../categories/schemas/category.model';
+import { Product } from '../../products/schemas/product.model';
 import { ProductCategoryIF } from './product-category.interface';
 
 @Table({ updatedAt: false, createdAt: false, tableName: 'product-category' })
