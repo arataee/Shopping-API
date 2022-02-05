@@ -8,8 +8,8 @@ import {
 	AllowNull,
 	BelongsToMany,
 } from 'sequelize-typescript';
-import { ProductMedia } from 'src/components/product-media/schemas/product-media.model';
-import { Product } from 'src/components/products/schemas/product.model';
+import { ProductMedia } from '../../product-media/schemas/product-media.model';
+import { Product } from '../../products/schemas/product.model';
 import { MediaIF } from './media.interface';
 
 @Table({ updatedAt: false, createdAt: true, tableName: 'media' })
