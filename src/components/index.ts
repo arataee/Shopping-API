@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CommentsModule } from './comments/comments.module';
 import { MediaModule } from './media/media.module';
@@ -8,6 +9,7 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 
 export default [
+	AuthModule,
 	CategoriesModule,
 	CommentsModule,
 	MediaModule,
