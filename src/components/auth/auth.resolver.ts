@@ -11,8 +11,8 @@ import { RegisterUserInput } from './schemas/register-user.input';
 export class AuthResolver {
 	constructor(private authService: AuthService) {}
 	@Mutation(() => User)
-	register(@Args('input') input: RegisterUserInput) {
-		return this.authService.register(input);
+	async register(@Args('input') input: RegisterUserInput) {
+		return await this.authService.register(input);
 	}
 
 	@UseGuards(GqlAuthGuard)
