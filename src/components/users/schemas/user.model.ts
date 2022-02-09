@@ -10,6 +10,7 @@ import {
 	HasMany,
 	Default,
 	BeforeCreate,
+	BeforeUpdate,
 } from 'sequelize-typescript';
 import { Roles } from './user-roles.enum';
 import { UsersIF } from './user.interface';
@@ -36,10 +37,13 @@ export class User extends Model implements UsersIF {
 	@Column(DataType.STRING)
 	email: string;
 
+	@BeforeUpdate
 	@BeforeCreate
 	static hashPassword = async (instance: User) => {
-		const salt = await genSalt(10);
-		instance.password = await hash(instance.password, salt);
+		if (instance.password) {
+			const salt = await genSalt(10);
+			instance.password = await hash(instance.password, salt);
+		}
 	};
 
 	@AllowNull(false)
@@ -53,8 +57,8 @@ export class User extends Model implements UsersIF {
 	address: string;
 
 	@AllowNull(false)
-	@Default('User')
-	@Column(DataType.ENUM('Admin', 'User'))
+	@Default(Roles.User)
+	@Column(DataType.ENUM(Roles.Admin, Roles.User))
 	role: Roles;
 
 	/*
