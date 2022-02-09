@@ -8,5 +8,6 @@ import { UsersService } from './users.service';
 @Module({
 	imports: [JwtModule.register({}), SequelizeModule.forFeature([User])],
 	providers: [UsersResolver, UsersService],
+	exports: [UsersService],
 })
 export class UsersModule {}
