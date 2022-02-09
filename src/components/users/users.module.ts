@@ -6,7 +6,7 @@ import { UsersResolver } from './users.resolver';
 import { UsersService } from './users.service';
 
 @Module({
-	imports: [JwtModule.register({}), SequelizeModule.forFeature([User])],
+	imports: [SequelizeModule.forFeature([User])],
 	providers: [UsersResolver, UsersService],
 	exports: [UsersService],
 })
