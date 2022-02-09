@@ -13,9 +13,6 @@ export class User implements UsersIF {
 	@Field()
 	email: string;
 
-	@Field()
-	password: string;
-
 	@Field(() => Int, { nullable: true })
 	phone: number;
 
@@ -24,13 +21,4 @@ export class User implements UsersIF {
 
 	@Field((type) => Roles)
 	role: Roles;
-}
-
-@ObjectType()
-export class UserToken {
-	@Field()
-	token: string;
-
-	@Field((type) => User)
-	user: User;
 }
