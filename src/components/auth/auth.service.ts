@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcryptjs';
 import { User } from '../users/schemas/user.model';
 import { UsersService } from '../users/users.service';
-import { RegisterUserInput } from './schemas/auth.input';
+import { RegisterUserInput } from './schemas/auth.inputs';
 
 @Injectable()
 export class AuthService {

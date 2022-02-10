@@ -4,7 +4,7 @@ import { User } from '../users/schemas/user.types';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
 import { Login } from './schemas/login.type';
-import { RegisterUserInput, LoginUserInput } from './schemas/auth.input';
+import { RegisterUserInput, LoginUserInput } from './schemas/auth.inputs';
 
 @Resolver()
 export class AuthResolver {
