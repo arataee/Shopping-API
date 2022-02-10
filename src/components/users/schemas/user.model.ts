@@ -57,7 +57,7 @@ export class User extends Model implements UsersIF {
 	address: string;
 
 	@AllowNull(false)
-	@Default(Roles.Default)
+	@Default(Roles.User)
 	@Column(DataType.ENUM.apply(this, userRoles))
 	role: Roles;
 
