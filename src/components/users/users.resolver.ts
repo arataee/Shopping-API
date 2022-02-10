@@ -15,7 +15,7 @@ export class UsersResolver {
 	async User(@Args('id', { type: () => Int }) id: number) {
 		const user = await this.usersService.findOne(id);
 		if (!user) {
-			throw new NotFoundException('User Not Found');
+			throw new NotFoundException('User Not Found!');
 		}
 		return user;
 	}
@@ -33,7 +33,7 @@ export class UsersResolver {
 	async updateUser(@Args('input') input: UpdateUserInput) {
 		const user = await this.usersService.update(input.id, input);
 		if (!user) {
-			throw new NotFoundException('User Not Found');
+			throw new NotFoundException('User Not Found!');
 		}
 		return user;
 	}
@@ -42,7 +42,7 @@ export class UsersResolver {
 	async removeUser(@Args('id', { type: () => Int }) id: number) {
 		const user = await this.usersService.remove(id);
 		if (!user) {
-			throw new NotFoundException('User Not Found');
+			throw new NotFoundException('User Not Found!');
 		}
 		return user;
 	}
