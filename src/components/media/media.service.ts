@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateMediaInput } from './schemas/create-media.input';
-import { UpdateMediaInput } from './schemas/update-media.input';
 import { Media } from './schemas/media.model';
+import { CreateMediaInput, UpdateMediaInput } from './schemas/media.types';
 
 @Injectable()
 export class MediaService {
