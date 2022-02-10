@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateUserInput } from './schemas/create-user.input';
-import { UpdateUserInput } from './schemas/update-user.input';
+import { CreateUserInput, UpdateUserInput } from './schemas/user.types';
 import { User } from './schemas/user.model';
 
 @Injectable()
@@ -31,17 +30,28 @@ export class UsersService {
 		return user;
 	}
 
-	async create(data: CreateUserInput) {
-		return await this.user.create({ ...data });
+	async create(data: CreateUserInput): Promise<{ user: User; error: any }> {
+		try {
+			const user = await this.user.create({ ...data });
+			return { user, error: null };
+		} catch (error) {
+			return { error, user: null };
+		}
 	}
 
 	async update(id: number, data: UpdateUserInput) {
 		const user = await this.findOne(id);
+		if (!user) {
+			return null;
+		}
 		return await user.update(data);
 	}
 
 	async remove(id: number) {
 		const user = await this.findOne(id);
+		if (!user) {
+			return null;
+		}
 		await user.destroy();
 		return user;
 	}
