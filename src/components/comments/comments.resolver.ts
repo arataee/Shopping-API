@@ -1,8 +1,10 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { CommentsService } from './comments.service';
-import { Comment } from './schemas/comment.type';
-import { UpdateCommentInput } from './schemas/update-comment.input';
-import { CreateCommentInput } from './schemas/create-comment.input';
+import {
+	Comment,
+	CreateCommentInput,
+	UpdateCommentInput,
+} from './schemas/comment.types';
 
 @Resolver()
 export class CommentsResolver {
