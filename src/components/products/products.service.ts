@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateProductInput } from './schemas/create-product.input';
-import { UpdateProductInput } from './schemas/update-product.input';
+import {
+	CreateProductInput,
+	UpdateProductInput,
+} from './schemas/product.types';
 import { Product } from './schemas/product.model';
 
 @Injectable()
