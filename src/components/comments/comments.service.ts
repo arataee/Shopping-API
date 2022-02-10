@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateCommentInput } from './schemas/create-comment.input';
-import { UpdateCommentInput } from './schemas/update-comment.input';
 import { Comment } from './schemas/comment.model';
+import {
+	CreateCommentInput,
+	UpdateCommentInput,
+} from './schemas/comment.types';
 
 @Injectable()
 export class CommentsService {
