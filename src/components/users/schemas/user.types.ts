@@ -7,6 +7,7 @@ import {
 	ObjectType,
 	OmitType,
 	PartialType,
+	PickType,
 	registerEnumType,
 } from '@nestjs/graphql';
 import { Roles } from './user-roles.enum';
@@ -14,7 +15,7 @@ import { UsersIF } from './user.interface';
 registerEnumType(Roles, { name: 'Roles' });
 
 @InterfaceType()
-class UserType implements UsersIF {
+export class UserType implements UsersIF {
 	@Field(() => Int)
 	id: number;
 
@@ -45,9 +46,9 @@ export class User extends OmitType(
 ) {}
 
 @InputType()
-export class CreateUserInput extends OmitType(
-	UserType,
-	['id'] as const,
+export class CreateUserInput extends IntersectionType(
+	OmitType(UserType, ['id', 'role'] as const, InputType),
+	PartialType(PickType(UserType, ['role'] as const), InputType),
 	InputType,
 ) {}
 
