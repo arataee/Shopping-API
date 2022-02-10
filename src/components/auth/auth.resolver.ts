@@ -1,11 +1,10 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args, Context } from '@nestjs/graphql';
-import { User } from '../users/schemas/user.type';
+import { User } from '../users/schemas/user.types';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
-import { LoginUserInput } from './schemas/login-user.input';
 import { Login } from './schemas/login.type';
-import { RegisterUserInput } from './schemas/register-user.input';
+import { RegisterUserInput, LoginUserInput } from './schemas/auth.input';
 
 @Resolver()
 export class AuthResolver {
