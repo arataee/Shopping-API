@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateCategoryInput } from './schemas/create-category.input';
-import { UpdateCategoryInput } from './schemas/update-category.input';
 import { Category } from './schemas/category.model';
+import {
+	CreateCategoryInput,
+	UpdateCategoryInput,
+} from './schemas/category.types';
 
 @Injectable()
 export class CategoriesService {
