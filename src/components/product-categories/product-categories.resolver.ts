@@ -1,8 +1,10 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductCategoriesService } from './product-categories.service';
-import { ProductCategory } from './schemas/product-category.type';
-import { UpdateProductCategoryInput } from './schemas/update-product-category.input';
-import { CreateProductCategoryInput } from './schemas/create-product-category.input';
+import {
+	CreateProductCategoryInput,
+	ProductCategory,
+	UpdateProductCategoryInput,
+} from './schemas/product-category.types';
 
 @Resolver()
 export class ProductCategoriesResolver {
