@@ -1,0 +1,247 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String
+  email: String!
+  phone: String
+  address: String
+  role: Roles!
+}
+
+enum Roles {
+  Admin
+  User
+  Default
+}
+
+type Login {
+  access_token: String!
+  sub: Float!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  description: String
+  slug: String!
+}
+
+type Comment {
+  id: Int!
+  body: String!
+  product_id: Int!
+  parent_id: Int
+  author_id: Int!
+  approved: Boolean!
+}
+
+type Media {
+  id: Int!
+  url: String!
+  description: String!
+}
+
+type ProductCategory {
+  id: Int!
+  product_id: Int!
+  category_id: Int!
+}
+
+type ProductMedia {
+  id: Int!
+  product_id: Int!
+  media_id: Int!
+}
+
+type ProductMeta {
+  id: Int!
+  product_id: Int!
+  key: String!
+  value: String!
+}
+
+type Product {
+  id: Int!
+  title: String!
+  description: String
+  content: String
+  indexImage: String
+  slug: String!
+  price: Int!
+  stock: Int!
+}
+
+type Query {
+  Users: [User!]!
+  User(id: Int!): User!
+  Categories: [Category!]!
+  Category(id: Int!): Category
+  Comments: [Comment!]!
+  Comment(id: Int!): Comment
+  AllMedia: [Media!]!
+  Media(id: Int!): Media
+  ProductCategories: [ProductCategory!]!
+  ProductCategory(id: Int!): ProductCategory
+  AllProductMedia: [ProductMedia!]!
+  ProductMedia(id: Int!): ProductMedia
+  ProductMetas: [ProductMeta!]!
+  ProductMeta(id: Int!): ProductMeta
+  Products: [Product!]!
+  Product(id: Int!): Product
+}
+
+type Mutation {
+  register(input: RegisterUserInput!): User!
+  login(input: LoginUserInput!): Login!
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createCategory(input: CreateCategoryInput!): Category!
+  updateCategory(input: UpdateCategoryInput!): Category!
+  removeCategory(id: Int!): Category!
+  createComment(input: CreateCommentInput!): Comment!
+  updateComment(input: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+  createMedia(input: CreateMediaInput!): Media!
+  updateMedia(input: UpdateMediaInput!): Media!
+  removeMedia(id: Int!): Media!
+  createProductCategory(input: CreateProductCategoryInput!): ProductCategory!
+  updateProductCategory(input: UpdateProductCategoryInput!): ProductCategory!
+  removeProductCategory(id: Int!): ProductCategory!
+  createProductMedia(input: CreateProductMediaInput!): ProductMedia!
+  updateProductMedia(input: UpdateProductMediaInput!): ProductMedia!
+  removeProductMedia(id: Int!): ProductMedia!
+  createProductMeta(input: CreateProductMetaInput!): ProductMeta!
+  updateProductMeta(input: UpdateProductMetaInput!): ProductMeta!
+  removeProductMeta(id: Int!): ProductMeta!
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(input: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
+}
+
+input RegisterUserInput {
+  name: String
+  email: String!
+  password: String!
+  phone: String
+  address: String
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateUserInput {
+  name: String
+  email: String!
+  password: String!
+  phone: String
+  address: String
+  role: Roles!
+}
+
+input UpdateUserInput {
+  id: Int!
+  name: String
+  email: String
+  password: String
+  phone: String
+  address: String
+  role: Roles
+}
+
+input CreateCategoryInput {
+  name: String!
+  description: String
+  slug: String!
+}
+
+input UpdateCategoryInput {
+  id: Int!
+  name: String
+  description: String
+  slug: String
+}
+
+input CreateCommentInput {
+  body: String!
+  product_id: Int!
+  parent_id: Int
+  author_id: Int!
+}
+
+input UpdateCommentInput {
+  id: Int!
+  body: String!
+}
+
+input CreateMediaInput {
+  url: String!
+  description: String!
+}
+
+input UpdateMediaInput {
+  id: Int!
+  url: String
+  description: String
+}
+
+input CreateProductCategoryInput {
+  product_id: Int!
+  category_id: Int!
+}
+
+input UpdateProductCategoryInput {
+  id: Int!
+  product_id: Int
+  category_id: Int
+}
+
+input CreateProductMediaInput {
+  product_id: Int!
+  media_id: Int!
+}
+
+input UpdateProductMediaInput {
+  id: Int!
+  product_id: Int
+  media_id: Int
+}
+
+input CreateProductMetaInput {
+  product_id: Int!
+  key: String!
+  value: String!
+}
+
+input UpdateProductMetaInput {
+  id: Int!
+  product_id: Int
+  key: String
+  value: String
+}
+
+input CreateProductInput {
+  title: String!
+  description: String
+  content: String
+  indexImage: String
+  slug: String!
+  price: Int!
+  stock: Int!
+}
+
+input UpdateProductInput {
+  id: Int!
+  title: String
+  description: String
+  content: String
+  indexImage: String
+  slug: String
+  price: Int
+  stock: Int
+}
