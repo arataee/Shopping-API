@@ -141,7 +141,7 @@ input CreateUserInput {
   password: String!
   phone: String
   address: String
-  role: Roles!
+  role: Roles
 }
 
 input UpdateUserInput {
