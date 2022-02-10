@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateProductMediaInput } from './schemas/create-product-media.input';
-import { UpdateProductMediaInput } from './schemas/update-product-media.input';
 import { ProductMedia } from './schemas/product-media.model';
+import {
+	CreateProductMediaInput,
+	UpdateProductMediaInput,
+} from './schemas/product-media.types';
 
 @Injectable()
 export class ProductMediaService {
