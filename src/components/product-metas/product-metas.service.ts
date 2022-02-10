@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateProductMetaInput } from './schemas/create-product-metas.input';
-import { UpdateProductMetaInput } from './schemas/update-product-metas.input';
 import { ProductMeta } from './schemas/product-metas.model';
+import {
+	CreateProductMetaInput,
+	UpdateProductMetaInput,
+} from './schemas/product-metas.types';
 
 @Injectable()
 export class ProductMetasService {
