@@ -1,8 +1,10 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { MediaService } from './media.service';
-import { Media } from './schemas/media.type';
-import { UpdateMediaInput } from './schemas/update-media.input';
-import { CreateMediaInput } from './schemas/create-media.input';
+import {
+	CreateMediaInput,
+	Media,
+	UpdateMediaInput,
+} from './schemas/media.types';
 
 @Resolver()
 export class MediaResolver {
