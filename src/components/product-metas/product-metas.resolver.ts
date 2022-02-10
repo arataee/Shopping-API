@@ -1,8 +1,10 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductMetasService } from './product-metas.service';
-import { ProductMeta } from './schemas/product-metas.type';
-import { UpdateProductMetaInput } from './schemas/update-product-metas.input';
-import { CreateProductMetaInput } from './schemas/create-product-metas.input';
+import {
+	CreateProductMetaInput,
+	ProductMeta,
+	UpdateProductMetaInput,
+} from './schemas/product-metas.types';
 
 @Resolver()
 export class ProductMetasResolver {
