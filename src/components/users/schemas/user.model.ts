@@ -15,12 +15,12 @@ import {
 import { Roles } from './user-roles.enum';
 import { UsersIF } from './user.interface';
 import { genSalt, hash } from 'bcryptjs';
-
 /*
 	Association & Relations
 */
 import { Product } from '../../products/schemas/product.model';
 import { Comment } from '../../comments/schemas/comment.model';
+const userRoles = [...new Set(Object.values(Roles))];
 
 @Table({ updatedAt: false, createdAt: true, tableName: 'user' })
 export class User extends Model implements UsersIF {
@@ -50,15 +50,15 @@ export class User extends Model implements UsersIF {
 	@Column(DataType.STRING)
 	password: string;
 
-	@Column(DataType.INTEGER)
-	phone: number;
+	@Column(DataType.STRING)
+	phone: string;
 
 	@Column(DataType.STRING)
 	address: string;
 
 	@AllowNull(false)
 	@Default(Roles.User)
-	@Column(DataType.ENUM(Roles.Admin, Roles.User))
+	@Column(DataType.ENUM.apply(this, userRoles))
 	role: Roles;
 
 	/*
