@@ -1,0 +1,47 @@
+type Query {
+  Users: [User!]!
+  User(id: Int!): User!
+  Categories: [Category!]!
+  Category(id: Int!): Category
+  Comments: [Comment!]!
+  Comment(id: Int!): Comment
+  AllMedia: [Media!]!
+  Media(id: Int!): Media
+  ProductCategories: [ProductCategory!]!
+  ProductCategory(id: Int!): ProductCategory
+  AllProductMedia: [ProductMedia!]!
+  ProductMedia(id: Int!): ProductMedia
+  ProductMetas: [ProductMeta!]!
+  ProductMeta(id: Int!): ProductMeta
+  Products: [Product!]!
+  Product(id: Int!): Product
+}
+
+type Mutation {
+  register(input: RegisterUserInput!): User!
+  login(input: LoginUserInput!): Login!
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createCategory(input: CreateCategoryInput!): Category!
+  updateCategory(input: UpdateCategoryInput!): Category!
+  removeCategory(id: Int!): Category!
+  createComment(input: CreateCommentInput!): Comment!
+  updateComment(input: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+  createMedia(input: CreateMediaInput!): Media!
+  updateMedia(input: UpdateMediaInput!): Media!
+  removeMedia(id: Int!): Media!
+  createProductCategory(input: CreateProductCategoryInput!): ProductCategory!
+  updateProductCategory(input: UpdateProductCategoryInput!): ProductCategory!
+  removeProductCategory(id: Int!): ProductCategory!
+  createProductMedia(input: CreateProductMediaInput!): ProductMedia!
+  updateProductMedia(input: UpdateProductMediaInput!): ProductMedia!
+  removeProductMedia(id: Int!): ProductMedia!
+  createProductMeta(input: CreateProductMetaInput!): ProductMeta!
+  updateProductMeta(input: UpdateProductMetaInput!): ProductMeta!
+  removeProductMeta(id: Int!): ProductMeta!
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(input: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
+}
