@@ -1,0 +1,8 @@
+mutation {
+	createCategory(input: { name: "test", description: "test", slug: null }) {
+		id
+		name
+		description
+		slug
+	}
+}

@@ -1,0 +1,19 @@
+type Category {
+  id: Int!
+  name: String!
+  description: String
+  slug: String!
+}
+
+input CreateCategoryInput {
+  name: String!
+  description: String
+  slug: String!
+}
+
+input UpdateCategoryInput {
+  id: Int!
+  name: String
+  description: String
+  slug: String
+}

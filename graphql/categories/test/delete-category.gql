@@ -1,0 +1,8 @@
+mutation {
+	removeCategory(id: 10) {
+		id
+		name
+		description
+		slug
+	}
+}

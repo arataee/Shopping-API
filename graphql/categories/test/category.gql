@@ -1,0 +1,8 @@
+query {
+	Category(id: 1) {
+		id
+		name
+		description
+		slug
+	}
+}
