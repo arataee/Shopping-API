@@ -1,0 +1,18 @@
+mutation {
+	register(
+		input: {
+			name: "user"
+			email: "test@email.com"
+			password: "12345678"
+			phone: "989171234567"
+			address: "test"
+		}
+	) {
+		id
+		name
+		email
+		phone
+		address
+		role
+	}
+}

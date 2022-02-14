@@ -1,0 +1,17 @@
+type Login {
+  access_token: String!
+  sub: Float!
+}
+
+input RegisterUserInput {
+  name: String
+  email: String!
+  password: String!
+  phone: String
+  address: String
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
