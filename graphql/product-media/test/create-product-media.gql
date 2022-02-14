@@ -1,0 +1,7 @@
+mutation {
+	createProductMedia(input: { product_id: 1, media_id: 1 }) {
+		id
+		product_id
+		media_id
+	}
+}

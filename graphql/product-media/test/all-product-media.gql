@@ -1,0 +1,7 @@
+query {
+	AllProductMedia {
+		id
+		product_id
+		media_id
+	}
+}

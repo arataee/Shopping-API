@@ -1,0 +1,7 @@
+mutation {
+	removeProductMedia(id: 1) {
+		id
+		product_id
+		media_id
+	}
+}

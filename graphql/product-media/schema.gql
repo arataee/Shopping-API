@@ -1,0 +1,16 @@
+type ProductMedia {
+  id: Int!
+  product_id: Int!
+  media_id: Int!
+}
+
+input CreateProductMediaInput {
+  product_id: Int!
+  media_id: Int!
+}
+
+input UpdateProductMediaInput {
+  id: Int!
+  product_id: Int
+  media_id: Int
+}
