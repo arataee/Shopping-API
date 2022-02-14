@@ -1,0 +1,23 @@
+mutation {
+	updateProduct(
+		input: {
+			id: 1
+			title: "test"
+			description: "test"
+			content: "test"
+			indexImage: "test"
+			slug: "test"
+			price: 100
+			stock: 10
+		}
+	) {
+		id
+		title
+		description
+		content
+		indexImage
+		slug
+		price
+		stock
+	}
+}

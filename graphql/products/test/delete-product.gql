@@ -1,0 +1,12 @@
+mutation {
+	removeProduct(id: 1) {
+		id
+		title
+		description
+		content
+		indexImage
+		slug
+		price
+		stock
+	}
+}

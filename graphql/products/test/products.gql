@@ -1,0 +1,12 @@
+query {
+	Products {
+		id
+		title
+		description
+		content
+		indexImage
+		slug
+		price
+		stock
+	}
+}

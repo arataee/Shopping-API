@@ -1,0 +1,22 @@
+mutation {
+	createProduct(
+		input: {
+			title: "test"
+			description: "test"
+			content: "test"
+			indexImage: "test"
+			slug: null
+			price: 100
+			stock: 10
+		}
+	) {
+		id
+		title
+		description
+		content
+		indexImage
+		slug
+		price
+		stock
+	}
+}
