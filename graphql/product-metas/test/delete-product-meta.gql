@@ -1,0 +1,8 @@
+mutation {
+	removeProductMeta(id: 1) {
+		id
+		product_id
+		key
+		value
+	}
+}

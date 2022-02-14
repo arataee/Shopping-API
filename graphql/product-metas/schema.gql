@@ -1,0 +1,19 @@
+type ProductMeta {
+  id: Int!
+  product_id: Int!
+  key: String!
+  value: String!
+}
+
+input CreateProductMetaInput {
+  product_id: Int!
+  key: String!
+  value: String!
+}
+
+input UpdateProductMetaInput {
+  id: Int!
+  product_id: Int
+  key: String
+  value: String
+}

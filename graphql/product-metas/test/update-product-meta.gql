@@ -1,0 +1,10 @@
+mutation {
+	updateProductMeta(
+		input: { id: 1, product_id: 1, key: "test", value: "test" }
+	) {
+		id
+		product_id
+		key
+		value
+	}
+}

@@ -1,0 +1,8 @@
+mutation {
+	createProductMeta(input: { product_id: 1, key: "test", value: "test" }) {
+		id
+		product_id
+		key
+		value
+	}
+}

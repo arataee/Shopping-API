@@ -1,0 +1,8 @@
+query {
+	ProductMetas {
+		id
+		product_id
+		key
+		value
+	}
+}
