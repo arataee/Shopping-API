@@ -1,0 +1,33 @@
+type User {
+  id: Int!
+  name: String
+  email: String!
+  phone: String
+  address: String
+  role: Roles!
+}
+
+enum Roles {
+  Admin
+  User
+  Default
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  name: String
+  phone: String
+  address: String
+  role: Roles
+}
+
+input UpdateUserInput {
+  id: Int!
+  name: String
+  email: String
+  password: String
+  phone: String
+  address: String
+  role: Roles
+}

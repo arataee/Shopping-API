@@ -1,0 +1,20 @@
+mutation {
+	updateUser(
+		input: {
+			id: 1
+			name: "user"
+			email: "test@email.com"
+			password: "12345678"
+			phone: "+989171234567"
+			address: "test"
+			role: User
+		}
+	) {
+		id
+		name
+		email
+		phone
+		address
+		role
+	}
+}
