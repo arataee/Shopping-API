@@ -1,0 +1,7 @@
+mutation {
+	createProductCategory(input: { product_id: 1, category_id: 1 }) {
+		id
+		product_id
+		category_id
+	}
+}

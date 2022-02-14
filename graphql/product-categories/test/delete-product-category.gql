@@ -1,0 +1,7 @@
+mutation {
+	removeProductCategory(id: 1) {
+		id
+		product_id
+		category_id
+	}
+}

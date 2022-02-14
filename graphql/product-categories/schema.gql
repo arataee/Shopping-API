@@ -1,0 +1,16 @@
+type ProductCategory {
+  id: Int!
+  product_id: Int!
+  category_id: Int!
+}
+
+input CreateProductCategoryInput {
+  product_id: Int!
+  category_id: Int!
+}
+
+input UpdateProductCategoryInput {
+  id: Int!
+  product_id: Int
+  category_id: Int
+}
