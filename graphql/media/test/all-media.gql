@@ -1,0 +1,7 @@
+query {
+	AllMedia {
+		id
+		url
+		description
+	}
+}

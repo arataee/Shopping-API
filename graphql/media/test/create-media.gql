@@ -1,0 +1,7 @@
+mutation {
+	createMedia(input: { url: "http://test.com", description: "test" }) {
+		id
+		url
+		description
+	}
+}

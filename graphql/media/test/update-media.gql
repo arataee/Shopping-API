@@ -1,0 +1,7 @@
+mutation {
+	updateMedia(input: { id: 1, url: "http://test.com", description: "test" }) {
+		id
+		url
+		description
+	}
+}

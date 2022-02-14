@@ -1,0 +1,7 @@
+mutation {
+	removeMedia(id: 1) {
+		id
+		url
+		description
+	}
+}

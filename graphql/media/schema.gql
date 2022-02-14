@@ -1,0 +1,16 @@
+type Media {
+  id: Int!
+  url: String!
+  description: String!
+}
+
+input CreateMediaInput {
+  url: String!
+  description: String!
+}
+
+input UpdateMediaInput {
+  id: Int!
+  url: String
+  description: String
+}

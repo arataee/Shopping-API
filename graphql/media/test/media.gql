@@ -1,0 +1,7 @@
+query {
+	Media(id: 1) {
+		id
+		url
+		description
+	}
+}
