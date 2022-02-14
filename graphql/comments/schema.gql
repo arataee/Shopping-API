@@ -1,0 +1,20 @@
+type Comment {
+  id: Int!
+  body: String!
+  product_id: Int!
+  parent_id: Int
+  author_id: Int!
+  approved: Boolean!
+}
+
+input CreateCommentInput {
+  body: String!
+  product_id: Int!
+  parent_id: Int
+  author_id: Int!
+}
+
+input UpdateCommentInput {
+  id: Int!
+  body: String!
+}

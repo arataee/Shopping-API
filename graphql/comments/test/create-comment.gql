@@ -1,0 +1,12 @@
+mutation {
+	createComment(
+		input: { body: "test", product_id: 1, author_id: 1, parent_id: null }
+	) {
+		id
+		body
+		product_id
+		author_id
+		parent_id
+		approved
+	}
+}

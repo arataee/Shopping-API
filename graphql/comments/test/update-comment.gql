@@ -1,0 +1,10 @@
+mutation {
+	updateComment(input: { id: 1, body: "test" }) {
+		id
+		body
+		product_id
+		author_id
+		parent_id
+		approved
+	}
+}

@@ -1,0 +1,10 @@
+mutation {
+	removeComment(id: 1) {
+		id
+		body
+		product_id
+		author_id
+		parent_id
+		approved
+	}
+}
