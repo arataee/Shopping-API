@@ -10,9 +10,9 @@ import {
 	PickType,
 	registerEnumType,
 } from '@nestjs/graphql';
-import { Roles } from './user-roles.enum';
+import { Role } from './user-roles.enum';
 import { UsersIF } from './user.interface';
-registerEnumType(Roles, { name: 'Roles' });
+registerEnumType(Role, { name: 'Roles' });
 
 @InterfaceType()
 export class UserType implements UsersIF {
@@ -34,8 +34,8 @@ export class UserType implements UsersIF {
 	@Field({ nullable: true })
 	address: string;
 
-	@Field((type) => Roles)
-	role: Roles;
+	@Field((type) => Role)
+	role: Role;
 }
 
 @ObjectType()

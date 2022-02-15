@@ -1,4 +1,4 @@
-import { Roles } from './user-roles.enum';
+import { Role } from './user-roles.enum';
 
 export interface UsersIF {
 	id: number;
@@ -7,5 +7,5 @@ export interface UsersIF {
 	password: string;
 	phone: string;
 	address: string;
-	role: Roles;
+	role: Role;
 }

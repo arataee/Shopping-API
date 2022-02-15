@@ -12,17 +12,15 @@ import {
 	BeforeCreate,
 	BeforeUpdate,
 } from 'sequelize-typescript';
-import { Roles } from './user-roles.enum';
+import { Role, RolesArr } from './user-roles.enum';
 import { UsersIF } from './user.interface';
 import { genSalt, hash } from 'bcryptjs';
 /*
 	Association & Relations
 */
-import { Product } from '../../products/schemas/product.model';
 import { Comment } from '../../comments/schemas/comment.model';
-const userRoles = [...new Set(Object.values(Roles))];
 
-@Table({ updatedAt: false, createdAt: true, tableName: 'user' })
+@Table({ updatedAt: false, createdAt: true, tableName: 'users' })
 export class User extends Model implements UsersIF {
 	@PrimaryKey
 	@AutoIncrement
@@ -57,16 +55,13 @@ export class User extends Model implements UsersIF {
 	address: string;
 
 	@AllowNull(false)
-	@Default(Roles.User)
-	@Column(DataType.ENUM.apply(this, userRoles))
-	role: Roles;
+	@Default(Role.User)
+	@Column(DataType.ENUM.apply(this, RolesArr))
+	role: Role;
 
 	/*
 		Association & Relations
 	*/
 	@HasMany(() => Comment, 'id')
 	comments: Comment[];
-
-	@HasMany(() => Product, 'id')
-	products: Product[];
 }
