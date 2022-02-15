@@ -7,6 +7,7 @@ import {
 	OmitType,
 	PartialType,
 } from '@nestjs/graphql';
+import { Matches, Min } from 'class-validator';
 import { ProductIF } from './product.interface';
 
 @ObjectType()
@@ -14,6 +15,7 @@ export class Product implements ProductIF {
 	@Field(() => Int)
 	id: number;
 
+	@Matches(/^(\d|\w)?.*(\d|\w)$/)
 	@Field()
 	title: string;
 
@@ -29,9 +31,11 @@ export class Product implements ProductIF {
 	@Field()
 	slug: string;
 
+	@Min(0)
 	@Field(() => Int)
 	price: number;
 
+	@Min(0)
 	@Field(() => Int)
 	stock: number;
 }
