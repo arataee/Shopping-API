@@ -7,6 +7,7 @@ import {
 	OmitType,
 	PartialType,
 } from '@nestjs/graphql';
+import { IsUrl } from 'class-validator';
 import { MediaIF } from './media.interface';
 
 @ObjectType()
@@ -14,6 +15,7 @@ export class Media implements MediaIF {
 	@Field(() => Int)
 	id: number;
 
+	@IsUrl()
 	@Field()
 	url: string;
 
