@@ -7,6 +7,7 @@ import {
 	OmitType,
 	PartialType,
 } from '@nestjs/graphql';
+import { Matches } from 'class-validator';
 import { CategoryIF } from './category.interface';
 
 @ObjectType()
@@ -14,6 +15,7 @@ export class Category implements CategoryIF {
 	@Field(() => Int)
 	id: number;
 
+	@Matches(/^(\d|\w)?.*(\d|\w)$/)
 	@Field()
 	name: string;
 
