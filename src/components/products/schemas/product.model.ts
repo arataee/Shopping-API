@@ -11,7 +11,7 @@ import {
 	BelongsToMany,
 	HasMany,
 } from 'sequelize-typescript';
-import slugify from 'slugify';
+import { slugifyModelKey } from '../../../utils/slugify-model-hook';
 import { ProductIF } from './product.interface';
 
 /*
@@ -44,8 +44,7 @@ export class Product extends Model implements ProductIF {
 	indexImage: string;
 
 	@BeforeCreate
-	static slugify = (instance: Product) =>
-		(instance.slug = slugify(instance.title));
+	static slugify = slugifyModelKey<Product>('slug', 'title');
 
 	@Unique
 	@Column(DataType.STRING)
