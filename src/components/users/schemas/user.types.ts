@@ -10,7 +10,9 @@ import {
 	PickType,
 	registerEnumType,
 } from '@nestjs/graphql';
-import { Role } from './user-roles.enum';
+import { IsEmail, IsIn, IsPhoneNumber } from 'class-validator';
+import { IsPassword } from '../../../utils/validation';
+import { Role, RolesArr } from './user-roles.enum';
 import { UsersIF } from './user.interface';
 registerEnumType(Role, { name: 'Roles' });
 
@@ -22,18 +24,22 @@ export class UserType implements UsersIF {
 	@Field({ nullable: true })
 	name: string;
 
+	@IsEmail()
 	@Field()
 	email: string;
 
+	@IsPassword
 	@Field()
 	password: string;
 
+	@IsPhoneNumber()
 	@Field({ nullable: true })
 	phone: string;
 
 	@Field({ nullable: true })
 	address: string;
 
+	@IsIn(RolesArr)
 	@Field((type) => Role)
 	role: Role;
 }
