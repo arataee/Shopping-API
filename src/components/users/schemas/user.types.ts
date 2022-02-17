@@ -40,7 +40,7 @@ export class UserType implements UsersIF {
 	address: string;
 
 	@IsIn(RolesArr)
-	@Field((type) => Role)
+	@Field((type) => Role, { defaultValue: Role.Default })
 	role: Role;
 }
 
@@ -49,18 +49,25 @@ export class User extends OmitType(
 	UserType,
 	['password'] as const,
 	ObjectType,
-) {}
+) { }
 
 @InputType()
 export class CreateUserInput extends IntersectionType(
-	OmitType(UserType, ['id', 'role'] as const, InputType),
-	PartialType(PickType(UserType, ['role'] as const), InputType),
+	PickType(UserType, ['email', 'password'] as const, InputType),
+	PartialType(
+		PickType(
+			UserType,
+			['role', 'address', 'phone', 'name'] as const,
+			InputType,
+		),
+		InputType,
+	),
 	InputType,
-) {}
+) { }
 
 @InputType()
 export class UpdateUserInput extends IntersectionType(
-	UserType,
+	PickType(UserType, ['id'] as const, InputType),
 	PartialType(CreateUserInput, InputType),
 	InputType,
-) {}
+) { }
