@@ -8,7 +8,7 @@ export const slugifyModelKey = <T extends Model>(
 	return (instance: T) => {
 		const slugKey = slugKeyName as string,
 			baseKey = baseKeyName as string;
-		if (!instance[slugKey].trim()) {
+		if (!instance[slugKey] || !instance[slugKey].trim()) {
 			instance[slugKey] = slugify(instance[baseKey]);
 			return;
 		}
