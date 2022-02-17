@@ -6,7 +6,7 @@ export function IsPassword(object: Object, propertyName: string) {
 		name: 'isLongerThan',
 		target: object.constructor,
 		propertyName: propertyName,
-		options: { message: 'Password is not ok' },
+		options: { message: 'Password is not valid' },
 		validator: {
 			validate(value: string) {
 				const patterns: RegExp[] = [/[A-Z]/, /[a-z]/, /\d/, /[^\s\n]/];
