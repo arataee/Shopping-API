@@ -4,8 +4,8 @@ import {
 	Int,
 	IntersectionType,
 	ObjectType,
-	OmitType,
 	PartialType,
+	PickType,
 } from '@nestjs/graphql';
 import { Matches, Min } from 'class-validator';
 import { ProductIF } from './product.interface';
@@ -41,15 +41,22 @@ export class Product implements ProductIF {
 }
 
 @InputType()
-export class CreateProductInput extends OmitType(
-	Product,
-	['id'] as const,
-	InputType,
-) {}
+export class CreateProductInput extends IntersectionType(
+	PickType(Product, ['title', 'stock', 'price'] as const, InputType),
+	PartialType(
+		PickType(
+			Product,
+			['content', 'description', 'indexImage', 'slug'] as const,
+			InputType,
+		),
+		InputType,
+	),
+) { }
 
+CreateProductInput.prototype;
 @InputType()
 export class UpdateProductInput extends IntersectionType(
-	Product,
+	PickType(Product, ['id'] as const, InputType),
 	PartialType(CreateProductInput, InputType),
 	InputType,
-) {}
+) { }
