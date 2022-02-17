@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule } from '@nestjs/config';
 import components from './components';
+import { GraphQLErrorFormat } from './utils/exceptions';
 
 @Module({
 	imports: [
@@ -16,12 +17,12 @@ import components from './components';
 			database: process.env.DB_NAME,
 			autoLoadModels: true,
 			synchronize: true,
-			sync: {},
 		}),
 		GraphQLModule.forRoot({
 			autoSchemaFile: 'schema.gql',
+			formatError: GraphQLErrorFormat,
 		}),
 		...components,
 	],
 })
-export class AppModule {}
+export class AppModule { }
