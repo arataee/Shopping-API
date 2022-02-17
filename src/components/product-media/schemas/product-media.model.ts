@@ -12,7 +12,7 @@ import { Media } from '../../media/schemas/media.model';
 import { Product } from '../../products/schemas/product.model';
 import { ProductMediaIF } from './product-media.interface';
 
-@Table({ updatedAt: false, createdAt: true, tableName: 'products' })
+@Table({ updatedAt: false, createdAt: true, tableName: 'product-media' })
 export class ProductMedia extends Model implements ProductMediaIF {
 	@PrimaryKey
 	@AutoIncrement
