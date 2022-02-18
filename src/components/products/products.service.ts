@@ -25,16 +25,22 @@ export class ProductsService {
 	}
 
 	async create(data: CreateProductInput) {
-		return await this.product.create({ ...data });
+		return await this.product.create(data as any);
 	}
 
 	async update(id: number, data: UpdateProductInput) {
 		const product = await this.findOne(id);
+		if (!product) {
+			return null;
+		}
 		return await product.update(data);
 	}
 
 	async remove(id: number) {
 		const product = await this.findOne(id);
+		if (!product) {
+			return null;
+		}
 		await product.destroy();
 		return product;
 	}
