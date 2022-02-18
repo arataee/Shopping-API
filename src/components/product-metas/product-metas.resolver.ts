@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductMetasService } from './product-metas.service';
 import {
@@ -17,7 +18,11 @@ export class ProductMetasResolver {
 
 	@Query(() => ProductMeta, { nullable: true })
 	ProductMeta(@Args('id', { type: () => Int }) id: number) {
-		return this.productMetasService.findOne(id);
+		const productMeta = this.productMetasService.findOne(id);
+		if (!productMeta) {
+			throw new NotFoundException();
+		}
+		return productMeta;
 	}
 
 	@Mutation(() => ProductMeta)
@@ -27,11 +32,19 @@ export class ProductMetasResolver {
 
 	@Mutation(() => ProductMeta)
 	updateProductMeta(@Args('input') input: UpdateProductMetaInput) {
-		return this.productMetasService.update(input.id, input);
+		const productMeta = this.productMetasService.update(input.id, input);
+		if (!productMeta) {
+			throw new NotFoundException();
+		}
+		return productMeta;
 	}
 
 	@Mutation(() => ProductMeta)
 	removeProductMeta(@Args('id', { type: () => Int }) id: number) {
-		return this.productMetasService.remove(id);
+		const productMeta = this.productMetasService.remove(id);
+		if (!productMeta) {
+			throw new NotFoundException();
+		}
+		return productMeta;
 	}
 }
