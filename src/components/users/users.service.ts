@@ -5,7 +5,7 @@ import { User } from './schemas/user.model';
 
 @Injectable()
 export class UsersService {
-	constructor(@InjectModel(User) private user: typeof User) {}
+	constructor(@InjectModel(User) private user: typeof User) { }
 
 	async findAll() {
 		const users = await this.user.findAll();
@@ -30,13 +30,9 @@ export class UsersService {
 		return user;
 	}
 
-	async create(data: CreateUserInput): Promise<{ user: User; error: any }> {
-		try {
-			const user = await this.user.create({ ...data });
-			return { user, error: null };
-		} catch (error) {
-			return { error, user: null };
-		}
+	async create(data: CreateUserInput) {
+		const user = await this.user.create(data as any);
+		return user;
 	}
 
 	async update(id: number, data: UpdateUserInput) {
@@ -44,7 +40,7 @@ export class UsersService {
 		if (!user) {
 			return null;
 		}
-		return await user.update(data);
+		return await user.update(data as any);
 	}
 
 	async remove(id: number) {
