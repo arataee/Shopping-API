@@ -33,11 +33,17 @@ export class ProductCategoriesService {
 
 	async update(id: number, data: UpdateProductCategoryInput) {
 		const productCategory = await this.findOne(id);
+		if (!productCategory) {
+			return null;
+		}
 		return await productCategory.update(data);
 	}
 
 	async remove(id: number) {
 		const productCategory = await this.findOne(id);
+		if (!productCategory) {
+			return null;
+		}
 		await productCategory.destroy();
 		return productCategory;
 	}
