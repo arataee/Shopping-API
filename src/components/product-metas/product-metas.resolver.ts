@@ -1,5 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Auth } from 'src/utils/guards';
+import { Role } from '../users/schemas/user-roles.enum';
 import { ProductMetasService } from './product-metas.service';
 import {
 	CreateProductMetaInput,
@@ -25,11 +27,13 @@ export class ProductMetasResolver {
 		return productMeta;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMeta)
 	createProductMeta(@Args('input') input: CreateProductMetaInput) {
 		return this.productMetasService.create(input);
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMeta)
 	updateProductMeta(@Args('input') input: UpdateProductMetaInput) {
 		const productMeta = this.productMetasService.update(input.id, input);
@@ -39,6 +43,7 @@ export class ProductMetasResolver {
 		return productMeta;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMeta)
 	removeProductMeta(@Args('id', { type: () => Int }) id: number) {
 		const productMeta = this.productMetasService.remove(id);
