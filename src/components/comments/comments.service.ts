@@ -30,11 +30,17 @@ export class CommentsService {
 
 	async update(id: number, data: UpdateCommentInput) {
 		const comment = await this.findOne(id);
+		if (!comment) {
+			return null;
+		}
 		return await comment.update(data);
 	}
 
 	async remove(id: number) {
 		const comment = await this.findOne(id);
+		if (!comment) {
+			return null;
+		}
 		await comment.destroy();
 		return comment;
 	}
