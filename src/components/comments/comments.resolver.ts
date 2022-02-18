@@ -9,7 +9,7 @@ import {
 
 @Resolver()
 export class CommentsResolver {
-	constructor(private commentsService: CommentsService) { }
+	constructor(private commentsService: CommentsService) {}
 
 	@Query(() => [Comment])
 	Comments() {
