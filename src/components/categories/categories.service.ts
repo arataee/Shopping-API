@@ -30,11 +30,17 @@ export class CategoriesService {
 
 	async update(id: number, data: UpdateCategoryInput) {
 		const category = await this.findOne(id);
+		if (!category) {
+			return null;
+		}
 		return await category.update(data);
 	}
 
 	async remove(id: number) {
 		const category = await this.findOne(id);
+		if (!category) {
+			return null;
+		}
 		await category.destroy();
 		return category;
 	}
