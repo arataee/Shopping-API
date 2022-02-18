@@ -1,5 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Auth } from 'src/utils/guards';
+import { Role } from '../users/schemas/user-roles.enum';
 import { ProductMediaService } from './product-media.service';
 import {
 	CreateProductMediaInput,
@@ -9,7 +11,7 @@ import {
 
 @Resolver()
 export class ProductMediaResolver {
-	constructor(private productMediaService: ProductMediaService) { }
+	constructor(private productMediaService: ProductMediaService) {}
 
 	@Query(() => [ProductMedia])
 	AllProductMedia() {
@@ -25,11 +27,13 @@ export class ProductMediaResolver {
 		return productMeta;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMedia)
 	createProductMedia(@Args('input') input: CreateProductMediaInput) {
 		return this.productMediaService.create(input);
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMedia)
 	updateProductMedia(@Args('input') input: UpdateProductMediaInput) {
 		const productMeta = this.productMediaService.update(input.id, input);
@@ -39,6 +43,7 @@ export class ProductMediaResolver {
 		return productMeta;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductMedia)
 	removeProductMedia(@Args('id', { type: () => Int }) id: number) {
 		const productMeta = this.productMediaService.remove(id);
