@@ -32,11 +32,17 @@ export class ProductMediaService {
 
 	async update(id: number, data: UpdateProductMediaInput) {
 		const productMedia = await this.findOne(id);
+		if (!productMedia) {
+			return null;
+		}
 		return await productMedia.update(data);
 	}
 
 	async remove(id: number) {
 		const productMedia = await this.findOne(id);
+		if (!productMedia) {
+			return null;
+		}
 		await productMedia.destroy();
 		return productMedia;
 	}
