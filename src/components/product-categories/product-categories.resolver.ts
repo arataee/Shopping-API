@@ -1,5 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Auth } from '../../utils/guards';
+import { Role } from '../users/schemas/user-roles.enum';
 import { ProductCategoriesService } from './product-categories.service';
 import {
 	CreateProductCategoryInput,
@@ -25,11 +27,13 @@ export class ProductCategoriesResolver {
 		return productCategory;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductCategory)
 	createProductCategory(@Args('input') input: CreateProductCategoryInput) {
 		return this.productCategoriesService.create(input);
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductCategory)
 	updateProductCategory(@Args('input') input: UpdateProductCategoryInput) {
 		const productCategory = this.productCategoriesService.update(
@@ -42,6 +46,7 @@ export class ProductCategoriesResolver {
 		return productCategory;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => ProductCategory)
 	removeProductCategory(@Args('id', { type: () => Int }) id: number) {
 		const productCategory = this.productCategoriesService.remove(id);
