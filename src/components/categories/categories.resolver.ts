@@ -1,5 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Auth } from '../../utils/guards';
+import { Role } from '../users/schemas/user-roles.enum';
 import { CategoriesService } from './categories.service';
 import {
 	Category,
@@ -9,7 +11,7 @@ import {
 
 @Resolver()
 export class CategoriesResolver {
-	constructor(private categoriesService: CategoriesService) { }
+	constructor(private categoriesService: CategoriesService) {}
 
 	@Query(() => [Category])
 	Categories() {
@@ -25,11 +27,13 @@ export class CategoriesResolver {
 		return category;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => Category)
 	createCategory(@Args('input') input: CreateCategoryInput) {
 		return this.categoriesService.create(input);
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => Category)
 	async updateCategory(@Args('input') input: UpdateCategoryInput) {
 		const category = this.categoriesService.update(input.id, input);
@@ -39,6 +43,7 @@ export class CategoriesResolver {
 		return category;
 	}
 
+	@Auth(Role.Admin)
 	@Mutation(() => Category)
 	removeCategory(@Args('id', { type: () => Int }) id: number) {
 		const category = this.categoriesService.remove(id);
