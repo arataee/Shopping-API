@@ -27,11 +27,17 @@ export class MediaService {
 
 	async update(id: number, data: UpdateMediaInput) {
 		const media = await this.findOne(id);
+		if (!media) {
+			return null;
+		}
 		return await media.update(data);
 	}
 
 	async remove(id: number) {
 		const media = await this.findOne(id);
+		if (!media) {
+			return null;
+		}
 		await media.destroy();
 		return media;
 	}
