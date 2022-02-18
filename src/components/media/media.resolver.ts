@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { MediaService } from './media.service';
 import {
@@ -8,7 +9,7 @@ import {
 
 @Resolver()
 export class MediaResolver {
-	constructor(private mediaService: MediaService) {}
+	constructor(private mediaService: MediaService) { }
 
 	@Query(() => [Media])
 	AllMedia() {
@@ -17,7 +18,11 @@ export class MediaResolver {
 
 	@Query(() => Media, { nullable: true })
 	Media(@Args('id', { type: () => Int }) id: number) {
-		return this.mediaService.findOne(id);
+		const media = this.mediaService.findOne(id);
+		if (!media) {
+			throw new NotFoundException();
+		}
+		return media;
 	}
 
 	@Mutation(() => Media)
@@ -27,11 +32,19 @@ export class MediaResolver {
 
 	@Mutation(() => Media)
 	updateMedia(@Args('input') input: UpdateMediaInput) {
-		return this.mediaService.update(input.id, input);
+		const media = this.mediaService.update(input.id, input);
+		if (!media) {
+			throw new NotFoundException();
+		}
+		return media;
 	}
 
 	@Mutation(() => Media)
 	removeMedia(@Args('id', { type: () => Int }) id: number) {
-		return this.mediaService.remove(id);
+		const media = this.mediaService.remove(id);
+		if (!media) {
+			throw new NotFoundException();
+		}
+		return media;
 	}
 }
