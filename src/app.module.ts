@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule } from '@nestjs/config';
 import components from './components';
 import { GraphQLErrorFormat } from './utils/exceptions';
+import { DefaultAdminUser } from './utils/admin-user';
 
 @Module({
 	imports: [
@@ -24,5 +25,6 @@ import { GraphQLErrorFormat } from './utils/exceptions';
 		}),
 		...components,
 	],
+	providers: [DefaultAdminUser],
 })
-export class AppModule { }
+export class AppModule {}
