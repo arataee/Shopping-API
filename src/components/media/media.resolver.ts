@@ -1,5 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Auth } from '../../utils/guards';
+import { Role } from '../users/schemas/user-roles.enum';
 import { MediaService } from './media.service';
 import {
 	CreateMediaInput,
@@ -7,9 +9,10 @@ import {
 	UpdateMediaInput,
 } from './schemas/media.types';
 
+@Auth(Role.Admin)
 @Resolver()
 export class MediaResolver {
-	constructor(private mediaService: MediaService) { }
+	constructor(private mediaService: MediaService) {}
 
 	@Query(() => [Media])
 	AllMedia() {
