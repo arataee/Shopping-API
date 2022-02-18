@@ -3,8 +3,8 @@ import { Role } from '../components/users/schemas/user-roles.enum';
 import { CreateUserInput } from '../components/users/schemas/user.types';
 import { UsersService } from '../components/users/users.service';
 
-export const Admin: Provider = {
-	provide: 'AdminUser',
+export const DefaultAdminUser: Provider = {
+	provide: 'DefaultAdminUser',
 	useFactory: async (usersService: UsersService) => {
 		console.log('called');
 		const AdminUser: CreateUserInput = {
