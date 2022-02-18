@@ -51,7 +51,7 @@ export class CreateProductInput extends IntersectionType(
 		),
 		InputType,
 	),
-) { }
+) {}
 
 CreateProductInput.prototype;
 @InputType()
@@ -59,4 +59,4 @@ export class UpdateProductInput extends IntersectionType(
 	PickType(Product, ['id'] as const, InputType),
 	PartialType(CreateProductInput, InputType),
 	InputType,
-) { }
+) {}

@@ -5,7 +5,7 @@ import { User } from './schemas/user.model';
 
 @Injectable()
 export class UsersService {
-	constructor(@InjectModel(User) private user: typeof User) { }
+	constructor(@InjectModel(User) private user: typeof User) {}
 
 	async findAll() {
 		const users = await this.user.findAll();

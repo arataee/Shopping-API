@@ -49,7 +49,7 @@ export class User extends OmitType(
 	UserType,
 	['password'] as const,
 	ObjectType,
-) { }
+) {}
 
 @InputType()
 export class CreateUserInput extends IntersectionType(
@@ -63,11 +63,11 @@ export class CreateUserInput extends IntersectionType(
 		InputType,
 	),
 	InputType,
-) { }
+) {}
 
 @InputType()
 export class UpdateUserInput extends IntersectionType(
 	PickType(UserType, ['id'] as const, InputType),
 	PartialType(CreateUserInput, InputType),
 	InputType,
-) { }
+) {}

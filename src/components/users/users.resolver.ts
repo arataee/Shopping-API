@@ -8,7 +8,7 @@ import { NotFoundException } from '@nestjs/common';
 @Auth(Role.Admin)
 @Resolver()
 export class UsersResolver {
-	constructor(private usersService: UsersService) { }
+	constructor(private usersService: UsersService) {}
 	@Query(() => [User])
 	async Users() {
 		return await this.usersService.findAll();
