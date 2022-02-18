@@ -1,11 +1,14 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UsersService } from './users.service';
 import { User, CreateUserInput, UpdateUserInput } from './schemas/user.types';
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { Auth } from '../../utils/guards';
+import { Role } from './schemas/user-roles.enum';
+import { NotFoundException } from '@nestjs/common';
 
+@Auth(Role.Admin)
 @Resolver()
 export class UsersResolver {
-	constructor(private usersService: UsersService) {}
+	constructor(private usersService: UsersService) { }
 	@Query(() => [User])
 	async Users() {
 		return await this.usersService.findAll();
@@ -15,17 +18,14 @@ export class UsersResolver {
 	async User(@Args('id', { type: () => Int }) id: number) {
 		const user = await this.usersService.findOne(id);
 		if (!user) {
-			throw new NotFoundException('User Not Found!');
+			throw new NotFoundException();
 		}
 		return user;
 	}
 
 	@Mutation(() => User)
 	async createUser(@Args('input') input: CreateUserInput) {
-		const { user, error } = await this.usersService.create(input);
-		if (error) {
-			throw new BadRequestException(error.errors[0].message);
-		}
+		const user = await this.usersService.create(input);
 		return user;
 	}
 
@@ -33,7 +33,7 @@ export class UsersResolver {
 	async updateUser(@Args('input') input: UpdateUserInput) {
 		const user = await this.usersService.update(input.id, input);
 		if (!user) {
-			throw new NotFoundException('User Not Found!');
+			throw new NotFoundException();
 		}
 		return user;
 	}
@@ -42,7 +42,7 @@ export class UsersResolver {
 	async removeUser(@Args('id', { type: () => Int }) id: number) {
 		const user = await this.usersService.remove(id);
 		if (!user) {
-			throw new NotFoundException('User Not Found!');
+			throw new NotFoundException();
 		}
 		return user;
 	}
