@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { CommentsService } from './comments.service';
 import {
@@ -8,7 +9,7 @@ import {
 
 @Resolver()
 export class CommentsResolver {
-	constructor(private commentsService: CommentsService) {}
+	constructor(private commentsService: CommentsService) { }
 
 	@Query(() => [Comment])
 	Comments() {
@@ -17,7 +18,11 @@ export class CommentsResolver {
 
 	@Query(() => Comment, { nullable: true })
 	Comment(@Args('id', { type: () => Int }) id: number) {
-		return this.commentsService.findOne(id);
+		const comment = this.commentsService.findOne(id);
+		if (!comment) {
+			throw new NotFoundException();
+		}
+		return comment;
 	}
 
 	@Mutation(() => Comment)
@@ -27,11 +32,19 @@ export class CommentsResolver {
 
 	@Mutation(() => Comment)
 	updateComment(@Args('input') input: UpdateCommentInput) {
-		return this.commentsService.update(input.id, input);
+		const comment = this.commentsService.update(input.id, input);
+		if (!comment) {
+			throw new NotFoundException();
+		}
+		return comment;
 	}
 
 	@Mutation(() => Comment)
 	removeComment(@Args('id', { type: () => Int }) id: number) {
-		return this.commentsService.remove(id);
+		const comment = this.commentsService.remove(id);
+		if (!comment) {
+			throw new NotFoundException();
+		}
+		return comment;
 	}
 }
