@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductCategoriesService } from './product-categories.service';
 import {
@@ -8,7 +9,7 @@ import {
 
 @Resolver()
 export class ProductCategoriesResolver {
-	constructor(private productCategoriesService: ProductCategoriesService) {}
+	constructor(private productCategoriesService: ProductCategoriesService) { }
 
 	@Query(() => [ProductCategory])
 	ProductCategories() {
@@ -17,7 +18,11 @@ export class ProductCategoriesResolver {
 
 	@Query(() => ProductCategory, { nullable: true })
 	ProductCategory(@Args('id', { type: () => Int }) id: number) {
-		return this.productCategoriesService.findOne(id);
+		const productCategory = this.productCategoriesService.findOne(id);
+		if (!productCategory) {
+			throw new NotFoundException();
+		}
+		return productCategory;
 	}
 
 	@Mutation(() => ProductCategory)
@@ -27,11 +32,22 @@ export class ProductCategoriesResolver {
 
 	@Mutation(() => ProductCategory)
 	updateProductCategory(@Args('input') input: UpdateProductCategoryInput) {
-		return this.productCategoriesService.update(input.id, input);
+		const productCategory = this.productCategoriesService.update(
+			input.id,
+			input,
+		);
+		if (!productCategory) {
+			throw new NotFoundException();
+		}
+		return productCategory;
 	}
 
 	@Mutation(() => ProductCategory)
 	removeProductCategory(@Args('id', { type: () => Int }) id: number) {
-		return this.productCategoriesService.remove(id);
+		const productCategory = this.productCategoriesService.remove(id);
+		if (!productCategory) {
+			throw new NotFoundException();
+		}
+		return productCategory;
 	}
 }
