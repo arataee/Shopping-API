@@ -11,7 +11,7 @@ import {
 
 @Resolver()
 export class ProductCategoriesResolver {
-	constructor(private productCategoriesService: ProductCategoriesService) { }
+	constructor(private productCategoriesService: ProductCategoriesService) {}
 
 	@Query(() => [ProductCategory])
 	ProductCategories() {
