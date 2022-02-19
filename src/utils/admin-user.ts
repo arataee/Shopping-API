@@ -6,7 +6,6 @@ import { UsersService } from '../components/users/users.service';
 export const DefaultAdminUser: Provider = {
 	provide: 'DefaultAdminUser',
 	useFactory: async (usersService: UsersService) => {
-		console.log('called');
 		const AdminUser: CreateUserInput = {
 			email: process.env.ADMIN_EMAIL,
 			password: process.env.ADMIN_PASSWORD,
