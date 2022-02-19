@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { JwtAuthGuard } from 'src/components/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../components/auth/guards/jwt-auth.guard';
 import { Role } from '../components/users/schemas/user-roles.enum';
 
 export const ROLES_KEY = 'roles';
