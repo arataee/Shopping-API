@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { Auth } from 'src/utils/guards';
+import { Auth } from '../../utils/guards';
 import { Role } from '../users/schemas/user-roles.enum';
 import { ProductMediaService } from './product-media.service';
 import {
